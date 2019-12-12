@@ -71,8 +71,25 @@
               </div>
             </div>
             <div class="table-responsive">
+
+               <?php 
+                  if(isset($_GET['pesan'])){
+                    if($_GET['pesan'] == "exist"){
+                      echo "<div class='alert alert-danger' role='alert'>
+                                <strong>Gagal!</strong> Username sudah digunakan!
+                            </div>";
+                    }else if($_GET['pesan'] == "sukses"){
+                       echo "<div class='alert alert-success' role='alert'>
+                                <strong>Sukses!</strong> Berhasil ditambahkan!
+                            </div>";
+                    }else if($_GET['pesan'] == "belum_login"){
+                      echo "Anda harus login untuk mengakses halaman admin";
+                    }
+                  }
+                  ?>
               <!-- Projects table -->
               <table id="data" class="table align-items-center table-flush">
+                
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">No.</th>
