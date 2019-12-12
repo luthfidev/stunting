@@ -65,7 +65,7 @@
                 </div>
                 <div class="col text-right">
                   <!-- <a href="report/cetak_report_rekap_stok.php" class="btn btn-danger">Cetak Report</a> -->
-                   <a href="#" data-toggle="modal" data-target="#AddModal" class="btn btn-success">Tambah</a> 
+                   <!-- <a href="#" data-toggle="modal" data-target="#AddModal" class="btn btn-success">Tambah</a> --> 
                 </div>
               </div>
             </div>
