@@ -6,12 +6,12 @@
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 	
-	/*if ((empty($username)) || (empty($password))) { 
+	if ((empty($username)) || (empty($password))) { 
 	$response = new usr();
 	$response->success = 0;
 	$response->message = "Kolom tidak boleh kosong"; 
 	 	die(json_encode($response));
-	 }*/
+	 }
 	
 	 $query = mysqli_query($connect, "SELECT * FROM admin WHERE username='$username' AND password='$password'");
 	
@@ -21,7 +21,7 @@
 	 	$response = new usr();
 	 	$response->success = 1;
 	 	$response->message = "Selamat datang ".$row['username'];
-	 	$response->id_admin = $row['id_admin'];
+	 	//$response->id_admin = $row['id_admin'];
 	 	$response->username = $row['username'];
 	 	die(json_encode($response));
 		
