@@ -2,7 +2,9 @@
 	include_once "config.php";
 
 	 // class usr{}
-	
+	//Get the input request parameters
+$inputJSON = file_get_contents('php://input');
+$input = json_decode($inputJSON, TRUE);
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 	
