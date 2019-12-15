@@ -4,9 +4,9 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
 
   $nama_anak = $_POST['nama_anak'];
   $nama_ibu = $_POST['nama_ibu'];
-  $tanggal = $_POST['tanggal'];
+  // $tanggal = $_POST['tanggal'];
 
-  $res = mysqli_query($connect,"SELECT * FROM anak where nama_anak LIKE '%$nama_anak%' AND nama_ibu LIKE '%$nama_ibu%' AND tanggal LIKE '%$tanggal%");
+  $res = mysqli_query($connect,"SELECT * FROM anak where nama_anak LIKE '%$nama_anak%' AND nama_ibu LIKE '%$nama_ibu%' ");
  $cek = mysqli_num_rows($res);
   if ($cek == 0 ){
 
@@ -14,11 +14,20 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
   }
   if ($cek == 1){
   
-    $result = array();
+    $data = array();
     while($row = mysqli_fetch_array($res)){
-      array_push($result, array('id_anak'=>$row[0], 'nama_anak'=>$row[1], 'nama_ibu'=>$row[2], 'tanggal'=>$row[3]));
+      array_push($data, array('id_anak'=>$row[0], 
+      							'nama_anak'=>$row[1], 
+      							'jk' => $row[2],
+      							'nama_ibu'=>$row[3], 
+      							'umur'=>$row[4],
+      							'berat'=>$row[5],
+      							'tinggi'=>$row[6],
+      							'keterangan'=>$row[7],
+      							'tanggal'=>$row[8])
+  									);
     }
-    echo json_encode(array("value"=>1,"result"=>$result));
+    echo json_encode(array("value"=>1,"data"=>$data));
   mysqli_close($connect);
 }
 }
