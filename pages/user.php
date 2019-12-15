@@ -143,7 +143,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Username" type="text" name="username" id="username">
+                      <input class="form-control" placeholder="Username" type="text" name="username" id="username" required>
                     </div>
                   </div>
                   <div class="form-group">
@@ -151,7 +151,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-badge"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Password" type="text" name="password" id="password">
+                      <input class="form-control" placeholder="Password" type="text" name="password" id="password" required>
                     </div>
                   </div>
                   <div class="form-group">
