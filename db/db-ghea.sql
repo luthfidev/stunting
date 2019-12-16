@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2019 at 02:52 PM
+-- Generation Time: Dec 16, 2019 at 04:36 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -44,7 +44,9 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`, `level`) VALUES
 (2, 'doktor', '22', ''),
 (3, 'adminss', 'admin', ''),
 (4, 'asd', 'sss', 'doktor'),
-(5, 'd', 'dsds', 'perawat');
+(5, 'd', 'dsds', 'perawat'),
+(7, 'sd', 'sdsd', 'admin'),
+(8, 'dsdsdsd', 'asdasd', 'admin');
 
 -- --------------------------------------------------------
 
@@ -55,6 +57,7 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`, `level`) VALUES
 CREATE TABLE `anak` (
   `id_anak` int(11) NOT NULL,
   `nama_anak` text NOT NULL,
+  `jk` varchar(255) NOT NULL,
   `nama_ibu` text NOT NULL,
   `umur` int(11) NOT NULL,
   `berat` double NOT NULL,
@@ -67,11 +70,11 @@ CREATE TABLE `anak` (
 -- Dumping data for table `anak`
 --
 
-INSERT INTO `anak` (`id_anak`, `nama_anak`, `nama_ibu`, `umur`, `berat`, `tinggi`, `keterangan`, `tanggal`) VALUES
-(1, 'putra', 'yati', 12, 10.1, 44, 'Gizi Baik', '0000-00-00'),
-(2, '', '', 0, 0, 0, '', '0000-00-00'),
-(3, '2', '2', 22, 22, 22, 'jjj', '2019-12-12'),
-(4, '', '', 22, 0, 0, '222', '0000-00-00');
+INSERT INTO `anak` (`id_anak`, `nama_anak`, `jk`, `nama_ibu`, `umur`, `berat`, `tinggi`, `keterangan`, `tanggal`) VALUES
+(1, 'putra', '', 'yati', 12, 10.1, 44, 'Gizi Baik', '0000-00-00'),
+(2, '', '', '', 0, 0, 0, '', '0000-00-00'),
+(3, 'dani', 'L', 'yani', 22, 22, 22, 'jjj', '2019-12-12'),
+(4, '', '', '', 22, 0, 0, '222', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -97,7 +100,7 @@ ALTER TABLE `anak`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `anak`
