@@ -75,6 +75,7 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">No.</th>
+                    <th scope="col">Tanggal</th>
                     <th scope="col">Nama Anak</th>
                     <th scope="col">Ibu</th>
                     <th scope="col">Usia</th>
@@ -84,12 +85,19 @@
                 </thead>
                   <tbody>
                       <?php
-                       $query = mysqli_query($connect, "SELECT * FROM anak");
+                      $strCustomerID = null;
+
+                      if(isset($_GET["tanggal"]))
+                      {
+                        $tanggal = $_GET["tanggal"];
+                      }
+                       $query = mysqli_query($connect, "SELECT * FROM anak WHERE tanggal = '".$tanggal."'");
                        $no=1;
                        while ($data=mysqli_fetch_array($query)) {
                       ?>
                         <tr>
                           <td><?php echo $no; ?></td>
+                          <td><?php echo $data['tanggal']; ?></td>
                           <td><?php echo $data['nama_anak']; ?></td>
                           <td><?php echo $data['nama_ibu']; ?></td>
                           <td><?php echo $data['umur']; ?></td>
