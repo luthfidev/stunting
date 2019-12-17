@@ -75,37 +75,32 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">No.</th>
-                    <th scope="col">Nama Anak</th>
-                    <th scope="col">Ibu</th>
-                    <th scope="col">Usia</th>
-                    <th scope="col">Status Balita</th>
-                    <th class="text-center" scope="col">Warna Identifikasi Status Balita</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Laki</th>
+                    <th scope="col">Perempuan</th>
+                    
+                    <th class="text-center" scope="col">Detail</th>
                   </tr>
                 </thead>
                   <tbody>
                       <?php
-                       $query = mysqli_query($connect, "SELECT * FROM anak");
+                       //$query = mysqli_query($connect, "SELECT tanggal, COUNT(*) as jenis FROM anak WHERE jk='L' GROUP BY tanggal");
+                        $query = mysqli_query($connect, "select tanggal, COUNT(*)as tot, 
+                                                        COUNT(case when anak.jk='L' then 1 end) as laki,
+                                                        COUNT(case when anak.jk='P' then 1 end) as cew 
+                                                        from anak  group by tanggal");
+                                        
                        $no=1;
                        while ($data=mysqli_fetch_array($query)) {
                       ?>
                         <tr>
                           <td><?php echo $no; ?></td>
-                          <td><?php echo $data['nama_anak']; ?></td>
-                          <td><?php echo $data['nama_ibu']; ?></td>
-                          <td><?php echo $data['umur']; ?></td>
+                          <td><?php echo $data['tanggal']; ?></td>
+                          <td><?php echo $data['laki']; ?></td>
+                          <td><?php echo $data['cew']; ?></td>
                           <td><?php echo $data['keterangan']; ?></td>
-                          <?php if ($data['keterangan']=="Gizi Baik") {?>
-                            <td class="text-center">
-                            <a class="btn btn-success" title="Sehat" href="#"><i class="fa fa-check"></i></a>
-                          </td>
-                          <?php }else{ ?>
-                            <td class="text-center">
-                            <a class="btn btn-warning" title="Tidak Sehat" href="#"><i class="fa fa-times"></i></a>
-                          </td>
-                          <?php } ?>
-                          
-                        </tr>
-                        <?php
+                          <td></td>
+                       <?php
                           $no++;
                           }
                         ?>
