@@ -61,7 +61,7 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h1 class="mb-0">Data Anak</h1>
+                  <h1 class="mb-0">Detail Data Anak</h1>
                 </div>
                 <div class="col text-right">
                   <!-- <a href="report/cetak_report_rekap_stok.php" class="btn btn-danger">Cetak Report</a> -->
@@ -77,6 +77,7 @@
                     <th scope="col">No.</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Nama Anak</th>
+                    <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Ibu</th>
                     <th scope="col">Usia</th>
                     <th scope="col">Status Balita</th>
@@ -99,6 +100,7 @@
                           <td><?php echo $no; ?></td>
                           <td><?php echo $data['tanggal']; ?></td>
                           <td><?php echo $data['nama_anak']; ?></td>
+                          <td><?php echo $data['jk']; ?></td>
                           <td><?php echo $data['nama_ibu']; ?></td>
                           <td><?php echo $data['umur']; ?></td>
                           <td><?php echo $data['keterangan']; ?></td>

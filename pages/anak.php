@@ -98,7 +98,7 @@
                           <td><?php echo $data['tanggal']; ?></td>
                           <td><?php echo $data['laki']; ?></td>
                           <td><?php echo $data['cew']; ?></td>
-                          <td><a href="anak_detail.php?tanggal=<?php echo $data["tanggal"];?>">Detail</a></td>
+                          <td><a href="anak_detail.php?tanggal=<?php echo $data["tanggal"];?>"><i class="btn btn-info">Detail</i></a></td>
                        <?php
                           $no++;
                           }
