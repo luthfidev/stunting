@@ -86,8 +86,8 @@
                       <?php
                        //$query = mysqli_query($connect, "SELECT tanggal, COUNT(*) as jenis FROM anak WHERE jk='L' GROUP BY tanggal");
                         $query = mysqli_query($connect, "select tanggal, COUNT(*)as tot, 
-                                                        COUNT(case when anak.jk='L' then 1 end) as laki,
-                                                        COUNT(case when anak.jk='P' then 1 end) as cew 
+                                                        COUNT(case when anak.jk='Laki-Laki' then 1 end) as laki,
+                                                        COUNT(case when anak.jk='Perempuan' then 1 end) as cew 
                                                         from anak  group by tanggal");
                                         
                        $no=1;
