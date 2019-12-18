@@ -124,7 +124,8 @@
                         </tr>
                         <?php
                           $no++;
-                         
+                        
+                            }
                         ?>
                   </tbody>
               </table>
@@ -214,9 +215,7 @@
       </div>
     </div>
   </div>
-<?php
- }
-?>
+
     <!-- Modal Content -->
     <div class="modal fade show" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="modal-form"">
       <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
