@@ -92,7 +92,7 @@
                       {
                         $tanggal = $_GET["tanggal"];
                       }
-                       $query = mysqli_query($connect, "SELECT * FROM anak WHERE tanggal = '".$tanggal."'");
+                       $query = mysqli_query($connect, "SELECT * FROM anak WHERE tanggal = '".$tanggal."' ORDER BY id_anak DESC");
                        $no=1;
                        while ($data=mysqli_fetch_array($query)) {
                       ?>

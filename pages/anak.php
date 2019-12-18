@@ -88,7 +88,7 @@
                         $query = mysqli_query($connect, "select tanggal, COUNT(*)as tot, 
                                                         COUNT(case when anak.jk='Laki-Laki' then 1 end) as laki,
                                                         COUNT(case when anak.jk='Perempuan' then 1 end) as cew 
-                                                        from anak  group by tanggal");
+                                                        from anak  group by tanggal order by id_anak DESC");
                                         
                        $no=1;
                        while ($data=mysqli_fetch_array($query)) {
