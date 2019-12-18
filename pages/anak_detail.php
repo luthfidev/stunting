@@ -116,7 +116,7 @@
                           </td>
                           <?php } ?>
                           <td>
-                          <a href="proses/ubah_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-primary">Ubah </a>
+                          <a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
                           <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a>
                           
                           </td>
@@ -124,7 +124,7 @@
                         </tr>
                         <?php
                           $no++;
-                          }
+                         
                         ?>
                   </tbody>
               </table>
@@ -137,6 +137,86 @@
       </footer>
     </div>
 
+    <div class="modal fade show" id="EditModal<?php echo $data['id_anak']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form"">
+      <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-white pb-2">
+                <div class="text-center mb-3">
+                  <h2>Edit Anak</h2>
+                </div>
+              </div>
+              <div class="card-body px-lg-3 py-lg-3">
+                <form role="form" method="POST" action="proses/ubah_anak.php">
+                      <?php
+                        $id = $data['id_anak']; 
+                        $query_edit = mysqli_query($connect, "SELECT * FROM anak WHERE id_anak='$id'");
+                        //$result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_array($query_edit)) {  
+                      ?>
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Nama Anak" type="hidden" name="id_anak" id="id"  value="<?php echo $row['id_anak']; ?>">
+                      <input class="form-control" placeholder="Nama Anak" type="text" name="nama_anak" id="nama" value="<?php echo $row['nama_anak']; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                      </div>
+                      <select class="form-control" name="jk" id="level" value="<?php echo $row['jk']; ?>">
+                          <option value="Laki-Laki">Laki-Laki</option>
+                          <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Nama Ibu" type="text" name="nama_ibu" id="ibu" value="<?php echo $row['nama_ibu']; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Umur Anak" type="text" name="umur" id="umur" value="<?php echo $row['umur']; ?>">
+                    </div>
+                  </div>
+<!--                   <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Keterangan Kesehatan" type="text" name="keterangan" id="keterangan">
+                    </div>
+                  </div> -->
+                 
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary my-4">Ubah</button>
+                  </div>
+                    <?php 
+                        }
+                    ?>  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php
+ }
+?>
     <!-- Modal Content -->
     <div class="modal fade show" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="modal-form"">
       <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
@@ -158,6 +238,7 @@
                       <input class="form-control" placeholder="Nama Anak" type="text" name="nama" id="nama">
                     </div>
                   </div>
+                  
                   <div class="form-group">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
@@ -194,63 +275,7 @@
       </div>
     </div>
 
-    <div class="modal fade show" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modal-form"">
-      <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-body p-0">
-            <div class="card bg-secondary shadow border-0">
-              <div class="card-header bg-white pb-2">
-                <div class="text-center mb-3">
-                  <h2>Edit Anak</h2>
-                </div>
-              </div>
-              <div class="card-body px-lg-3 py-lg-3">
-                <form role="form" method="post" action="proses/tambah_anak.php">
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="Nama Anak" type="text" name="nama" id="nama">
-                      <input class="form-control" placeholder="Nama Anak" type="hidden" name="id" id="id">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="Nama Ibu" type="text" name="ibu" id="ibu">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="Umur Anak" type="text" name="umur" id="umur">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="Keterangan Kesehatan" type="text" name="keterangan" id="keterangan">
-                    </div>
-                  </div>
-                 
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary my-4">Submit</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+   
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
