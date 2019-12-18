@@ -77,9 +77,8 @@
                     <th scope="col">No.</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Laki</th>
-                    <th scope="col">Perempuan</th>
-                    
-                    <th class="text-center" scope="col">Detail</th>
+                    <th scope="col">Perempuan</th> 
+                    <th scope="col">Detail</th>
                   </tr>
                 </thead>
                   <tbody>
