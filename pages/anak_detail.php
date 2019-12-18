@@ -34,6 +34,7 @@
   <!-- Argon CSS -->
   <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/DataTables/datatables.min.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css"/>
 </head>
 
 
@@ -81,7 +82,8 @@
                     <th scope="col">Ibu</th>
                     <th scope="col">Usia</th>
                     <th scope="col">Status Balita</th>
-                    <th class="text-center" scope="col">Warna Identifikasi Status Balita</th>
+                    <th scope="col">Warna Identifikasi Status Balita</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                   <tbody>
@@ -113,7 +115,12 @@
                             <a class="btn btn-warning" title="Tidak Sehat" href="#"><i class="fa fa-times"></i></a>
                           </td>
                           <?php } ?>
+                          <td>
+                          <a href="proses/ubah_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-primary">Ubah </a>
+                          <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a>
                           
+                          </td>
+                            
                         </tr>
                         <?php
                           $no++;
@@ -247,6 +254,7 @@
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
   <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Optional JS -->
   <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
@@ -291,6 +299,34 @@
             modal.find('.modal-body #umur').val(recipient4)
             modal.find('.modal-body #ibu').val(recipient2)
           })
+  </script>
+  <script>
+
+$('.del').on('click', function (e){
+  e.preventDefault();
+  const href = $(this).attr('href')
+  Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        document.location.href = href;
+      }
+    })
+})
+
+  $('.del-tbn').on('click', function(){
+        swall.fire({
+          type : 'success',
+          tittle: 'Tittla',
+          text: 'text'
+        })
+})
   </script>
 </body>
 
