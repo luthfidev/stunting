@@ -99,7 +99,7 @@
                        while ($data=mysqli_fetch_array($query)) {
                       ?>
                         <tr>
-                          <td><?php echo $no; ?></td>
+                          <td><?php echo $no++; ?></td>
                           <td><?php echo $data['tanggal']; ?></td>
                           <td><?php echo $data['nama_anak']; ?></td>
                           <td><?php echo $data['jk']; ?></td>
@@ -122,23 +122,7 @@
                           </td>
                             
                         </tr>
-                        <?php
-                          $no++;
-                        
-                            }
-                        ?>
-                  </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Footer -->
-      <footer class="footer">
-      </footer>
-    </div>
-
-    <div class="modal fade show" id="EditModal<?php echo $data['id_anak']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form"">
+                        <div class="modal fade show" id="EditModal<?php echo $data['id_anak']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form"">
       <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-body p-0">
@@ -192,7 +176,7 @@
                       <input class="form-control" placeholder="Umur Anak" type="text" name="umur" id="umur" value="<?php echo $row['umur']; ?>">
                     </div>
                   </div>
-<!--                   <div class="form-group">
+                      <!--  <div class="form-group">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-badge"></i></span>
@@ -206,15 +190,31 @@
                   </div>
                     <?php 
                         }
-                    ?>  
-                </form>
+                      ?>  
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+                        <?php
+                          
+                          }
+                        ?>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer class="footer">
+      </footer>
+    </div>
+
+   
 
     <!-- Modal Content -->
     <div class="modal fade show" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="modal-form"">
