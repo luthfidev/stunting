@@ -1,4 +1,5 @@
 <?php
+ini_set('date.timezone', 'Asia/Jakarta');
 //host yang digunakan
 //99,9% tidak perlu dirubah
 $host = 'localhost'; 
