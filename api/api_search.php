@@ -9,11 +9,12 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
   $res = mysqli_query($connect,"SELECT * FROM anak where nama_anak LIKE '%$nama_anak%' AND nama_ibu LIKE '%$nama_ibu%' ");
  $cek = mysqli_num_rows($res);
   if ($cek == 0 ){
-
-  	echo json_encode("data tidak ditemukan");
+    $response->status = 0;
+	 	$response->messages = "Data tidak Ditemukan";
+	 		 	die(json_encode($response));
+  	//echo json_encode("data tidak ditemukan");
   }
   if ($cek == 1){
-  
     $data = array();
     while($row = mysqli_fetch_array($res)){
       array_push($data, array('id_anak'=>$row[0], 
@@ -27,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
       							'tanggal'=>$row[8])
   									);
     }
-    echo json_encode(array("value"=>1,"data"=>$data));
+    echo json_encode(array("status"=>1,"data"=>$data));
   mysqli_close($connect);
 }
 }
