@@ -1,13 +1,7 @@
 <?php 
   session_start();
   include '../config.php';
-    function rupiah($angka){
 
-  
-  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-  return $hasil_rupiah;
- 
-  }
   if (isset($_SESSION['username'])) {
   $username = $_SESSION['username'];
   $isLoggedIn = $_SESSION['isLoggedIn'];
