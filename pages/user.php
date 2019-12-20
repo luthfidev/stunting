@@ -1,13 +1,7 @@
 <?php 
   session_start();
   include '../config.php';
-    function rupiah($angka){
 
-  
-  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-  return $hasil_rupiah;
- 
-  }
   if (isset($_SESSION['username'])) {
   $username = $_SESSION['username'];
   $isLoggedIn = $_SESSION['isLoggedIn'];
@@ -35,6 +29,7 @@
   <!-- Argon CSS -->
   <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/DataTables/datatables.min.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css"/>
 </head>
 
 
@@ -96,6 +91,7 @@
                     <th scope="col">Nama Pengguna</th>
                     <th scope="col">Password</th>
                     <th scope="col">Level</th>
+                    <th scope="col">Action</th>
                 </thead>
                   <tbody>
                       <?php
@@ -108,7 +104,7 @@
                           <td><?php echo $data['username']; ?></td>
                           <td><?php echo $data['password']; ?></td>
                           <td><?php echo $data['level']; ?></td>
-   
+                          <td><a href="proses/hapus_user.php?id_admin=<?php echo $data["id_admin"];?>" class="btn btn-danger del">Hapus</a></td>
                         </tr>
                         <?php
                           $no++;
@@ -246,6 +242,7 @@
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $('#data').DataTable( {        
@@ -282,6 +279,34 @@
             modal.find('.modal-body #password').val(recipient3)
             modal.find('.modal-body #level').val(recipient4)
           })
+  </script>
+   <script>
+
+$('.del').on('click', function (e){
+  e.preventDefault();
+  const href = $(this).attr('href')
+  Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        document.location.href = href;
+      }
+    })
+})
+
+  $('.del-tbn').on('click', function(){
+        swall.fire({
+          type : 'success',
+          tittle: 'Tittla',
+          text: 'text'
+        })
+})
   </script>
 </body>
 
