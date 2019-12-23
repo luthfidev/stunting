@@ -100,7 +100,7 @@
                           <td><?php echo $data['nama_ibu']; ?></td>
                           <td><?php echo $data['umur']; ?></td>
                           <td><?php echo $data['keterangan']; ?></td>
-                          <?php if ($data['keterangan']=="Gizi Baik") {?>
+                          <?php if ($data['keterangan']=="Stunting Gizi Baik") {?>
                             <td class="text-center">
                             <a class="btn btn-success" data-toggle="tooltip" data-placement="right" title="Sehat" href="#"><i class="fa fa-check"></i></a>
                           </td>
