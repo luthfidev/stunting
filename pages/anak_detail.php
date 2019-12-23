@@ -102,11 +102,11 @@
                           <td><?php echo $data['keterangan']; ?></td>
                           <?php if ($data['keterangan']=="Gizi Baik") {?>
                             <td class="text-center">
-                            <a class="btn btn-success" title="Sehat" href="#"><i class="fa fa-check"></i></a>
+                            <a class="btn btn-success" data-toggle="tooltip" data-placement="right" title="Sehat" href="#"><i class="fa fa-check"></i></a>
                           </td>
                           <?php }else{ ?>
                             <td class="text-center">
-                            <a class="btn btn-warning" title="Tidak Sehat" href="#"><i class="fa fa-times"></i></a>
+                            <a class="btn btn-warning" data-toggle="tooltip" data-placement="right" title="Tidak Sehat" href="#"><i class="fa fa-times"></i></a>
                           </td>
                           <?php } ?>
                           <td>

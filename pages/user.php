@@ -104,8 +104,16 @@
                           <td><?php echo $data['username']; ?></td>
                           <td><?php echo $data['password']; ?></td>
                           <td><?php echo $data['level']; ?></td>
-                          <td><a href="proses/hapus_user.php?id_admin=<?php echo $data["id_admin"];?>" class="btn btn-danger del">Hapus</a></td>
-                        </tr>
+                          <?php if ($data['level']=="admin") {?>
+                            <td>
+                            <a href="#"  data-toggle="tooltip" data-placement="right" title="Admin tidak dapat di hapus" class="btn btn-danger">Hapus</a>
+                          </td>
+                          <?php }else{ ?>
+                           
+                            <td><a href="proses/hapus_user.php?id_admin=<?php echo $data["id_admin"];?>" class="btn btn-danger del">Hapus</a></td>
+                      
+                          <?php } ?>
+                       </tr>
                         <?php
                           $no++;
                           }

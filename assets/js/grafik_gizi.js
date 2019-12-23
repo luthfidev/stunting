@@ -1,83 +1,56 @@
-$(document).ready(function() {
-
-	/**
-	 * call the data.php file to fetch the result from db table.
-	 */
+$(document).ready(function(){
 	$.ajax({
 		url : "http://localhost/stunting/api/api_grafik.php",
 		type : "GET",
 		success : function(data){
 			console.log(data);
+			
+			var tgl = [];
+			var baiks = [];
+			var buruks = [];
 
-			var score = {
-                label : [],
-				giziA : [],
-				giziB : []
-			};
-
-			var len = data.length;
-
-			for (var i = 0; i < len; i++) {
-                
-				if (data[i].keterangan == "baik") {
-					score.giziA.push(data[i].score);
-				}
-				else if (data[i].keterangan == "buruk") {
-					score.giziB.push(data[i].score);
-				}
+			for (var i in data) {
+				tgl.push(data[i].tanggal);
+				baiks.push(data[i].baik);
+				buruks.push(data[i].buruk);
 			}
 
-			//get canvas
-			var ctx = $("#chartcanvas");
-
-			var data = {
-				labels : ["match1", "match2"],
-				datasets : [
+			var chartdata = {
+				labels: tgl,
+				datasets: [
 					{
-						label : "TeamA score",
-						data : score.giziA,
-						backgroundColor : "blue",
-						borderColor : "lightblue",
-						fill : false,
-						lineTension : 0,
-						pointRadius : 5
+						label: "baik",
+						fill: false,
+						lineTension: 0.1,
+						backgroundColor: "rgba(59, 89, 152, 0.75)",
+						borderColor: "rgba(59, 89, 152, 1)",
+						pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
+						pointHoverBorderColor: "rgba(59, 89, 152, 1)",
+						data: baiks
 					},
 					{
-						label : "TeamB score",
-						data : score.giziB,
-						backgroundColor : "green",
-						borderColor : "lightgreen",
-						fill : false,
-						lineTension : 0,
-						pointRadius : 5
+						label: "buruk",
+						fill: false,
+						lineTension: 0.1,
+						backgroundColor: "rgba(59, 89, 152, 0.75)",
+						borderColor: "rgba(59, 89, 152, 1)",
+						pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
+						pointHoverBorderColor: "rgba(59, 89, 152, 1)",
+						data: buruks
 					}
 				]
 			};
 
-			var options = {
-				title : {
-					display : true,
-					position : "top",
-					text : "Line Graph",
-					fontSize : 18,
-					fontColor : "#111"
-				},
-				legend : {
-					display : true,
-					position : "bottom"
-				}
-			};
+			var ctx = $("#chartcanvas");
 
-			var chart = new Chart( ctx, {
-				type : "line",
-				data : data,
-				options : options
-			} );
+			var LineGraph = new Chart(ctx, {
+				type: 'line',
+				data: chartdata
+			});
 
 		},
-		error : function(data) {
-			console.log(data);
+		error : function(data){
+
 		}
 	});
-
 });

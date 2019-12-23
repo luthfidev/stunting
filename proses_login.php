@@ -25,7 +25,7 @@ if(!empty($_POST)){
             $_SESSION['iduser']=$iden;
             $_SESSION['username']=$username;
             $_SESSION['password']=$password;
-            header('Location: pages/index.php');
+            header('Location: pages/dashboard.php');
         }else{
             echo "username atau password salah";
             header('Location: index.php?pesan=gagal');

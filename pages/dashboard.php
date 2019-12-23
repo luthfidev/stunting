@@ -1,13 +1,7 @@
 <?php 
   session_start();
   include '../config.php';
-    function rupiah($angka){
-
-  
-  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-  return $hasil_rupiah;
- 
-  }
+    
   if (isset($_SESSION['username'])) {
   $username = $_SESSION['username'];
   $isLoggedIn = $_SESSION['isLoggedIn'];
@@ -16,7 +10,19 @@
   else {
     header('location:../index.php?pesan=belum_login');
   }
-?><html>
+  $query = mysqli_query($connect, "select tanggal, 
+	COUNT(case when anak.keterangan='Gizi Baik' then 1 end) as baik,
+	COUNT(case when anak.keterangan='Gizi Buruk' then 1 end) as buruk 
+	from anak  group by tanggal");
+  $chart_data = '';
+  while($row = mysqli_fetch_array($query))
+  {
+    $chart_data .= "{ tanggal: '".$row["tanggal"]."', baik: ".$row["baik"].", buruk: ".$row["buruk"]."}, ";
+  }
+  $chart_data = substr($chart_data, 0, -2);
+
+?>
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -34,6 +40,7 @@
   <!-- Argon CSS -->
   <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/DataTables/datatables.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 </head>
 
 
@@ -69,87 +76,100 @@
                           <div class="card-body">
                             <div class="row">
                               <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                                <span class="h2 font-weight-bold mb-0">350,897</span>
-                              </div>
-                              <div class="col-auto">
-                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                  <i class="fas fa-chart-bar"></i>
-                                </div>
-                              </div>
-                            </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                              <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                              <span class="text-nowrap">Since last month</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-6">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                                <span class="h2 font-weight-bold mb-0">2,356</span>
-                              </div>
-                              <div class="col-auto">
-                                <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                  <i class="fas fa-chart-pie"></i>
-                                </div>
-                              </div>
-                            </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                              <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                              <span class="text-nowrap">Since last week</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-6">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                                <span class="h2 font-weight-bold mb-0">924</span>
-                              </div>
-                              <div class="col-auto">
-                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                  <i class="fas fa-users"></i>
-                                </div>
-                              </div>
-                            </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                              <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                              <span class="text-nowrap">Since yesterday</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-6">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                                <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0">User</h5>
+                                <span class="h2 font-weight-bold mb-0">
+                                <?php
+                                $result=mysqli_query($connect, "SELECT count(*) as ttluser from admin");
+                                $data=mysqli_fetch_assoc($result);
+                                echo $data['ttluser'];
+                                ?>
+                                </span>
                               </div>
                               <div class="col-auto">
                                 <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                  <i class="fas fa-percent"></i>
+                                  <i class="fas fa-user"></i>
                                 </div>
                               </div>
                             </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                              <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                              <span class="text-nowrap">Since last month</span>
-                            </p>
+                      
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-3 col-lg-12">
-                      <canvas width="720" height="480" id="chartcanvas"></canvas>
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Anak</h5>
+                                <span class="h2 font-weight-bold mb-0">
+                                <?php
+                                $result=mysqli_query($connect, "SELECT count(*) as ttlanak from anak");
+                                $data=mysqli_fetch_assoc($result);
+                                echo $data['ttlanak'];
+                                ?>
+                                </span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                <i class="fas fa-smile"></i>
+                                </div>
+                              </div>
+                            </div>
+                        
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Sehat</h5>
+                                <span class="h2 font-weight-bold mb-0">
+                                <?php
+                                $result=mysqli_query($connect, "SELECT count(*) as sehat from anak where keterangan = 'Gizi Baik' ");
+                                $data=mysqli_fetch_assoc($result);
+                                echo $data['sehat'];
+                                ?>
+                                </span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-green text-white rounded-circle shadow">
+                                <i class="fas fa-check-square"></i>
+                                </div>
+                              </div>
+                            </div>
+                      
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Tidak Sehat</h5>
+                                <span class="h2 font-weight-bold mb-0">
+                                <?php
+                                $result=mysqli_query($connect, "SELECT count(*) as tsehat from anak where keterangan = 'Gizi Buruk' ");
+                                $data=mysqli_fetch_assoc($result);
+                                echo $data['tsehat'];
+                                ?>
+                                </span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-red text-white rounded-circle shadow">
+                                <i class="fas fa-times-circle"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-12 col-lg-12">
+                      <div id="chart"></div>
+                     
+	    
                       </div>
                     </div>
                     
@@ -175,7 +195,46 @@
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
-  <script src="../assets/js/grafik_gizi.js"></script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+ <!-- <script src="../assets/js/grafik_gizi.js"></script>   -->
+
+<script>
+/* new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'chart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [<?php echo $chart_data; ?> ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'tanggal',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['baik','buruk'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['baik','buruk']
+}); */
+
+new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'chart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [<?php echo $chart_data; ?>  ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'tanggal',
+  parseTime: false,
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['baik','buruk'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Baik','buruk'],
+  lineColors: ['#373651','#E65A26']
+});
+</script>
+
 </body>
 
 </html>
