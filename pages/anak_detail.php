@@ -70,11 +70,12 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">No.</th>
+                    <th scope="col">No. Medis</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Nama Anak</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Ibu</th>
-                    <th scope="col">Usia</th>
+                    <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Status Balita</th>
                     <th scope="col">Warna Identifikasi Status Balita</th>
                     <th scope="col">Action</th>
@@ -94,6 +95,7 @@
                       ?>
                         <tr>
                           <td><?php echo $no++; ?></td>
+                          <td><?php echo $data['no_medis']; ?></td>
                           <td><?php echo $data['tanggal']; ?></td>
                           <td><?php echo $data['nama_anak']; ?></td>
                           <td><?php echo $data['jk']; ?></td>
