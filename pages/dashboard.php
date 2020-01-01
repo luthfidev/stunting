@@ -166,13 +166,15 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-12 col-lg-12">
-                      <div id="chart"></div>
-                     
-	    
+
+                      <div class="col-xl-12 col-lg-6">
+                        <div class="card-body">
+                           <div class="card card-stats mb-4 mb-xl-0">
+                              <div id="chart"></div>
+                            </div>
+                        </div>
                       </div>
-                    </div>
-                    
+
                   </div>
                 </div>
               </div>
