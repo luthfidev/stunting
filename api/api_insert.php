@@ -12,7 +12,7 @@
 	 $keterangan = $_POST["keterangan"];
 	 $tanggal = date("Y-m-d");
 	 
-		 $query = mysqli_query($connect, "INSERT INTO anak (id_anak, no_medis, nama_anak, jk, nama_ibu, umur, berat, tinggi, keterangan, tanggal) VALUES(0, 0,'".$nama_anak."','".$jk."','".$nama_ibu."','".$umur."','".$berat."','".$tinggi."','".$keterangan."','".$tanggal."')");
+		 $query = mysqli_query($connect, "INSERT INTO anak (id_anak, nama_anak, jk, nama_ibu, umur, berat, tinggi, keterangan, tanggal) VALUES(0,'".$nama_anak."','".$jk."','".$nama_ibu."','".$umur."','".$berat."','".$tinggi."','".$keterangan."','".$tanggal."')");
 
 		 		if ($query){
 		 			$response = new usr();
