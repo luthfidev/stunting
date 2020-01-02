@@ -13,7 +13,7 @@
   $query = mysqli_query($connect, "select tanggal, 
 	COUNT(case when anak.keterangan='Stunting Gizi Baik' then 1 end) as baik,
   COUNT(case when anak.keterangan='Stunting Gizi Buruk' then 1 end) as buruk,
-  COUNT(case when anak.keterangan='Gizi Lebih' then 1 end) as lebih  
+  COUNT(case when anak.keterangan='Gizi lebih' then 1 end) as lebih  
 	from anak  group by tanggal");
   $chart_data = '';
   while($row = mysqli_fetch_array($query))
