@@ -234,7 +234,7 @@ new Morris.Line({
   // Labels for the ykeys -- will be displayed when you hover over the
   // chart.
   labels: ['Baik','Buruk','Lebih'],
-  lineColors: ['#373651','#E65A26']
+  lineColors: ['#373651','#E65A26','#0bb356']
 });
 </script>
 
