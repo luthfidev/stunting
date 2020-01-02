@@ -23,12 +23,13 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
                     'no_medis'=>$row[1], 
       							'nama_anak'=>$row[2], 
       							'jk' => $row[3],
-      							'nama_ibu'=>$row[4], 
-      							'umur'=>$row[5],
-      							'berat'=>$row[6],
-      							'tinggi'=>$row[7],
-      							'keterangan'=>$row[8],
-      							'tanggal'=>$row[9])
+                    'nama_ibu'=>$row[4],
+                    'tanggal_lahir'=>$row[5],  
+      							'umur'=>$row[6],
+      							'berat'=>$row[7],
+      							'tinggi'=>$row[8],
+      							'keterangan'=>$row[9],
+      							'tanggal'=>$row[10])
   									);
     }
     echo json_encode(array("status"=>1,"data"=>$data));
