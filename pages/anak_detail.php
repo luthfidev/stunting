@@ -76,6 +76,7 @@
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Ibu</th>
                     <th scope="col">Tanggal Lahir</th>
+                    <th scope="col">Umur</th>
                     <th scope="col">Status Balita</th>
                     <th scope="col">Warna Identifikasi Status Balita</th>
                     <th scope="col">Action</th>
@@ -100,6 +101,7 @@
                           <td><?php echo $data['nama_anak']; ?></td>
                           <td><?php echo $data['jk']; ?></td>
                           <td><?php echo $data['nama_ibu']; ?></td>
+                          <td><?php echo $data['tanggal_lahir']; ?></td>
                           <td><?php echo $data['umur']; ?></td>
                           <td><?php echo $data['keterangan']; ?></td>
                           <?php if ($data['keterangan']=="Stunting Gizi Baik") {?>
