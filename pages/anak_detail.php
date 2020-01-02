@@ -103,8 +103,8 @@
                           <td><?php echo $data['jk']; ?></td>
                           <td><?php echo $data['nama_ibu']; ?></td>
                           <td><?php echo $data['tanggal_lahir']; ?></td>
-                          <td><?php echo $data['berat']; ?></td>
-                          <td><?php echo $data['tinggi']; ?></td>
+                          <td><?php echo $data['berat']; ?> kg</td>
+                          <td><?php echo $data['tinggi']; ?> cm</td>
                           <td><?php echo $data['keterangan']; ?></td>
                           <?php if ($data['keterangan']=="Stunting Gizi Baik") {?>
                             <td class="text-center">
