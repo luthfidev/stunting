@@ -76,7 +76,8 @@
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Ibu</th>
                     <th scope="col">Tanggal Lahir</th>
-                    <th scope="col">Umur</th>
+                    <th scope="col">Berat</th>
+                    <th scope="col">Tinggi Badan</th> 
                     <th scope="col">Status Balita</th>
                     <th scope="col">Warna Identifikasi Status Balita</th>
                     <th scope="col">Action</th>
@@ -102,7 +103,8 @@
                           <td><?php echo $data['jk']; ?></td>
                           <td><?php echo $data['nama_ibu']; ?></td>
                           <td><?php echo $data['tanggal_lahir']; ?></td>
-                          <td><?php echo $data['umur']; ?></td>
+                          <td><?php echo $data['berat']; ?></td>
+                          <td><?php echo $data['tinggi']; ?></td>
                           <td><?php echo $data['keterangan']; ?></td>
                           <?php if ($data['keterangan']=="Stunting Gizi Baik") {?>
                             <td class="text-center">
@@ -116,7 +118,7 @@
                           <td>
                           <a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
                           <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a>
-                          <a href="detail_grafik.php?no_medis=<?php echo $data["no_medis"];?>" class="btn btn-info">Grafik</a>
+                          <a href="detail_grafik.php?nama_anak=<?php echo $data["nama_anak"];?>" class="btn btn-info">Grafik</a>
                           </td>
                             
                         </tr>
