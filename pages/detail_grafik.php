@@ -146,7 +146,7 @@ new Morris.Area({
   ykeys: ['baik','buruk','lebih','kurang'],
   // Labels for the ykeys -- will be displayed when you hover over the
   // chart.
-  labels: ['Baik','Buruk','Lebih','kurang'],
+  labels: ['Stunting Baik','Stunting Buruk','Stunting Lebih','Stunting Kurang'],
   lineColors: ['#373651','#E65A26','#0bb356','#ebe834']
 });
 </script>
