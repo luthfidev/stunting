@@ -18,7 +18,7 @@
   $chart_data = '';
   while($row = mysqli_fetch_array($query))
   {
-    $chart_data .= "{ tanggal: '".$row["tanggal"]."', baik: ".$row["baik"].", buruk: ".$row["buruk"].", lebih: ".$row["lebih"]."}, ";
+    $chart_data .= "{ tanggal: '".$row["tanggal"]."', baik: ".$row["baik"].", buruk: ".$row["buruk"].", lebih: ".$row["lebih"].",}, ";
   }
   $chart_data = substr($chart_data, 0, -2);
 
