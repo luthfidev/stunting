@@ -16,12 +16,19 @@
   {
     $nama_anak = $_GET["nama_anak"];
   }
-  $query = mysqli_query($connect, "select tanggal, nama_anak,
+ /*  $query = mysqli_query($connect, "select tanggal, nama_anak,
   COUNT(case when anak.keterangan='Stunting Gizi Baik' then 1 end) as baik,
   COUNT(case when anak.keterangan='Stunting Gizi Buruk' then 1 end) as buruk,
   COUNT(case when anak.keterangan='Stunting Gizi Kurang' then 1 end) as kurang,
   COUNT(case when anak.keterangan='Gizi lebih' then 1 end) as lebih 
-  from anak where nama_anak = '".$nama_anak."'  ");
+  from anak where nama_anak = '".$nama_anak."'"); */
+
+  $query = mysqli_query($connect, "select date_format(tanggal, '%Y-%m') as tanggal, nama_anak,
+  COUNT(case when anak.keterangan='Stunting Gizi Baik' then 1 end) as baik,
+  COUNT(case when anak.keterangan='Stunting Gizi Buruk' then 1 end) as buruk,
+  COUNT(case when anak.keterangan='Stunting Gizi Kurang' then 1 end) as kurang,
+  COUNT(case when anak.keterangan='Gizi lebih' then 1 end) as lebih 
+  from anak where nama_anak = '".$nama_anak."' group by tanggal");
   $chart_data = '';
   while($row = mysqli_fetch_array($query))
   {

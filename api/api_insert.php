@@ -3,15 +3,17 @@
 
 	 class usr{}
 
-	 $nama_anak = $_POST["nama_anak"];
-	 $nama_ibu = $_POST["nama_ibu"];
-	 $jk = $_POST["jk"];
+	 $nama_anak 	= $_POST["nama_anak"];
+	 $nama_ibu 		= $_POST["nama_ibu"];
+	 /* $nama_ayah 	= $_POST["nama_ayah"];
+	 $alamat 		= $_POST["alamat"]; */
+	 $jk 			= $_POST["jk"];
 	 $tanggal_lahir = $_POST["tanggal_lahir"];
-	 $umur = $_POST["umur"];
-	 $berat = $_POST["berat"];
-	 $tinggi = $_POST["tinggi"];
-	 $keterangan = $_POST["keterangan"];
-	 $tanggal = date("Y-m-d");
+	 $umur 			= $_POST["umur"];
+	 $berat 		= $_POST["berat"];
+	 $tinggi 		= $_POST["tinggi"];
+	 $keterangan 	= $_POST["keterangan"];
+	 $tanggal		= date("Y-m-d");
 	 
 		 $query = mysqli_query($connect, "INSERT INTO anak (id_anak, nama_anak, jk, nama_ibu, umur, tanggal_lahir, berat, tinggi, keterangan, tanggal) VALUES(0,'".$nama_anak."','".$jk."','".$nama_ibu."','".$umur."','".$tanggal_lahir."','".$berat."','".$tinggi."','".$keterangan."','".$tanggal."')");
 
