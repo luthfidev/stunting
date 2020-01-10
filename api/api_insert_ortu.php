@@ -11,13 +11,13 @@
 
 		 		if ($query){
 		 			$response = new usr();
-		 			$response->status = 1;
+		 			$response->success = 1;
 		 			$response->messages = "berhasil Simpan.";
 		 			die(json_encode($response));
 
 		 		} else {
 		 			$response = new usr();
-		 			$response->status = 0;
+		 			$response->success = 0;
 		 			$response->messages = "Gagal";
 		 			die(json_encode($response));
 		 		}
