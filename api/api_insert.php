@@ -12,10 +12,12 @@
 	 $umur 			= $_POST["umur"];
 	 $berat 		= $_POST["berat"];
 	 $tinggi 		= $_POST["tinggi"];
-	 $keterangan 	= $_POST["keterangan"];
+	 //$keterangan 	= $_POST["keterangan"];
+	 $status_stunting 	= $_POST["status_stunting"];
+	 $status_gizi 	= $_POST["status_gizi"];
 	 $tanggal		= date("Y-m-d");
 	 
-		 $query = mysqli_query($connect, "INSERT INTO anak (id_anak, nama_anak, jk, nama_ibu, umur, tanggal_lahir, berat, tinggi, keterangan, tanggal) VALUES(0,'".$nama_anak."','".$jk."','".$nama_ibu."','".$umur."','".$tanggal_lahir."','".$berat."','".$tinggi."','".$keterangan."','".$tanggal."')");
+		 $query = mysqli_query($connect, "INSERT INTO anak (id_anak, nama_anak, jk, nama_ibu, umur, tanggal_lahir, berat, tinggi, status_stunting, status_gizi, tanggal) VALUES(0,'".$nama_anak."','".$jk."','".$nama_ibu."','".$umur."','".$tanggal_lahir."','".$berat."','".$tinggi."','".$status_stunting."','".$status_gizi."','".$tanggal."')");
 
 		 		if ($query){
 		 			$response = new usr();
