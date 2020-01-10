@@ -8,14 +8,7 @@ require_once('../config.php');
 
 $res = mysqli_query($connect,"SELECT * FROM ortu order by id_ortu ");
  $cek = mysqli_num_rows($res);
-  if ($cek == 0 ){
-    $response->success = 0;
-    $response->data = 0;
-	$response->messages = "Data tidak Ditemukan";
-	 		 	die(json_encode($response));
-  	//echo json_encode("data tidak ditemukan");
-  }
-  if ($cek == 1){
+if ($cek > 0){
     $data = array();
     while($row = mysqli_fetch_array($res)){
       array_push($data, array(  'id_ortu'=>$row[0], 
