@@ -14,6 +14,6 @@ if ($cek > 0){
       array_push($data, array('no_medis'=>$row[1])
                 );
     }
-    echo json_encode(array("success"=>1,"data"=>$data));
+    echo json_encode(array("message"=>1,"data"=>$data));
   mysqli_close($connect);
 }
