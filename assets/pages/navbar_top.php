@@ -1,4 +1,4 @@
-<?php include '../config.php'; ?>
+<?php include '../../config.php'; ?>
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
   <div class="container-fluid">
     <!-- Brand -->
@@ -20,7 +20,7 @@
         <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="../assets/img/brand/favicon.png">
+              <img alt="Image placeholder" src="../../assets/img/brand/favicon.png">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
               <span class="mb-0 text-sm  font-weight-bold">Halo Admin</span>
@@ -36,7 +36,7 @@
             <span>My profile</span>
           </a> -->
           <div class="dropdown-divider"></div>
-          <a href="../logout.php" class="dropdown-item">
+          <a href="../../logout.php" class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>

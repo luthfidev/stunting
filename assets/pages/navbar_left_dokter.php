@@ -1,4 +1,15 @@
-<?php include '../config.php'; ?>
+<?php include '../../config.php'; ?>
+<?php 
+if (isset($_SESSION['username'])) {
+  $username = $_SESSION['username'];
+  $isLoggedIn = $_SESSION['isLoggedIn'];
+  $level= $_SESSION['level'];
+ 
+  }
+  else {
+    header('location:../index.php?pesan=belum_login');
+  }
+?>
   <!-- Sidenav -->
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -7,8 +18,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="../pages/index.php">
-        <img src="../assets/img/theme/angular.jpg" class="navbar-brand-img" alt="...">
+      <a href="../pages/index.php">
+        <img style="text-align: center;height: 200px;width: 200px;" src="../../assets/img/theme/posyandu.png">
       </a>
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="sidenav-collapse-main">
@@ -31,26 +42,29 @@
 
         <!-- Navigation -->
         <ul class="navbar-nav">
-<!--           <li class="nav-item">
-            <a class="nav-link" href="index.php">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.php">
               <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="anak.php">
+              <i class="ni ni-single-02 text-success"></i>Data Anak
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="user.php">
+              <i class="ni ni-single-02 text-success"></i>Data User
+            </a>
+          </li>
+<!--           <li class="nav-item">
+            <a class="nav-link" href="grafik.php">
+              <i class="ni ni-bullet-list-67 text-primary"></i> Grafik
+            </a>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="pesanan.php">
-              <i class="ni ni-single-02 text-red"></i> Pesanan
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pembelian.php">
-              <i class="ni ni-bag-17 text-info"></i> Pembelian
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pengeluaran.php">
-              <i class="ni ni-shop text-primary"></i> Pengeluaran
-            </a>
-          </li>
          
 
           

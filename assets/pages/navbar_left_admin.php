@@ -1,4 +1,15 @@
-<?php include '../config.php'; ?>
+<?php include '../../config.php'; ?>
+<?php 
+if (isset($_SESSION['username'])) {
+  $username = $_SESSION['username'];
+  $isLoggedIn = $_SESSION['isLoggedIn'];
+  $level= $_SESSION['level'];
+ 
+  }
+  else {
+    header('location:../index.php?pesan=belum_login');
+  }
+?>
   <!-- Sidenav -->
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -8,7 +19,7 @@
       </button>
       <!-- Brand -->
       <a href="../pages/index.php">
-        <img style="text-align: center;height: 200px;width: 200px;" src="../assets/img/theme/posyandu.png">
+        <img style="text-align: center;height: 200px;width: 200px;" src="../../assets/img/theme/posyandu.png">
       </a>
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="sidenav-collapse-main">
@@ -37,11 +48,13 @@
             </a>
           </li>
 
+
           <li class="nav-item">
             <a class="nav-link" href="anak.php">
               <i class="ni ni-single-02 text-success"></i>Data Anak
             </a>
           </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="user.php">
               <i class="ni ni-single-02 text-success"></i>Data User

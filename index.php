@@ -5,7 +5,7 @@
   if (isset($_SESSION['username'])) {
   $isLoggedIn = $_SESSION['isLoggedIn'];
   
-  header('location:pages/anak.php');
+  header('location:pages/admin/anak.php');
   }
 ?>
 <head>
