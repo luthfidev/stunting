@@ -11,7 +11,7 @@ $res = mysqli_query($connect,"SELECT * FROM anak order by no_medisanak");
 if ($cek > 0){
     $data = array();
     while($row = mysqli_fetch_array($res)){
-      array_push($data, array('no_medisanak'=>$row[1])
+      array_push($data, array('no_medisanak'=>$row[0])
                 );
     }
     echo json_encode(array("message"=>1,"semuamedis"=>$data));
