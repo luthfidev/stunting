@@ -17,8 +17,8 @@
 	 $status_gizi 	= $_POST["status_gizi"];
 	 $tanggal		= date("Y-m-d");
 	 
-		 $query = mysqli_query($connect, "INSERT INTO anak (id_anak, nama_anak, jk, umur, tanggal_lahir, berat, tinggi, status_stunting, status_gizi, tanggal) VALUES(0,'".$nama_anak."','".$jk."','".$umur."','".$tanggal_lahir."','".$berat."','".$tinggi."','".$status_stunting."','".$status_gizi."','".$tanggal."')");
-
+		 $query = mysqli_query($connect, "INSERT INTO temp_anak (id_anak, nama_anak, jk, umur, tanggal_lahir, berat, tinggi, status_stunting, status_gizi, tanggal) VALUES(0,'".$nama_anak."','".$jk."','".$umur."','".$tanggal_lahir."','".$berat."','".$tinggi."','".$status_stunting."','".$status_gizi."','".$tanggal."')");
+	
 		 		if ($query){
 		 			$response = new usr();
 		 			$response->status = 1;
