@@ -4,7 +4,7 @@
 	 class usr{}
 
 	 $nama_anak 	= $_POST["nama_anak"];
-	 $nama_ibu 		= $_POST["nama_ibu"];
+
 	 /* $nama_ayah 	= $_POST["nama_ayah"];
 	 $alamat 		= $_POST["alamat"]; */
 	 $jk 			= $_POST["jk"];
@@ -17,7 +17,7 @@
 	 $status_gizi 	= $_POST["status_gizi"];
 	 $tanggal		= date("Y-m-d");
 	 
-		 $query = mysqli_query($connect, "INSERT INTO anak (id_anak, nama_anak, jk, nama_ibu, umur, tanggal_lahir, berat, tinggi, status_stunting, status_gizi, tanggal) VALUES(0,'".$nama_anak."','".$jk."','".$nama_ibu."','".$umur."','".$tanggal_lahir."','".$berat."','".$tinggi."','".$status_stunting."','".$status_gizi."','".$tanggal."')");
+		 $query = mysqli_query($connect, "INSERT INTO anak (id_anak, nama_anak, jk, umur, tanggal_lahir, berat, tinggi, status_stunting, status_gizi, tanggal) VALUES(0,'".$nama_anak."','".$jk."','".$umur."','".$tanggal_lahir."','".$berat."','".$tinggi."','".$status_stunting."','".$status_gizi."','".$tanggal."')");
 
 		 		if ($query){
 		 			$response = new usr();
