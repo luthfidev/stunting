@@ -5,7 +5,8 @@
   if (isset($_SESSION['username'])) {
   $username = $_SESSION['username'];
   $isLoggedIn = $_SESSION['isLoggedIn'];
-  $id_login = $_SESSION['iduser'];
+  $level= $_SESSION['level'];
+ 
   }
   else {
     header('location:../index.php?pesan=belum_login');
@@ -49,7 +50,7 @@
 <body>
   <!-- Sidenav -->
 <?php   include '../config.php'; 
-  include '../assets/pages/navbar_left_wakil.php';
+  include '../assets/pages/navbar_left_dokter.php';
 ?>
   <!-- Main content -->
   <div class="main-content">
