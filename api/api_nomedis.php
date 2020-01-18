@@ -6,7 +6,7 @@ require_once('../config.php');
   $nama_ibu = $_POST['nama_ibu']; */
   // $tanggal = $_POST['tanggal'];
 
-$res = mysqli_query($connect,"SELECT * FROM anak order by id_anak");
+$res = mysqli_query($connect,"SELECT * FROM anak order by no_medisanak");
  $cek = mysqli_num_rows($res);
 if ($cek > 0){
     $data = array();
