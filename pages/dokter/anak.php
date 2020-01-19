@@ -119,9 +119,9 @@
                           </td>
                           <?php } ?> -->
                           <td>
-                         <a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
+                         <!-- <a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
                           <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a> 
-                          <a href="profil_anak.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-default">Profil</a>
+                          <a href="profil_anak.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-default">Profil</a> -->
                           <a href="detail_grafik.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-info">Grafik</a> 
                           </td>
                             
