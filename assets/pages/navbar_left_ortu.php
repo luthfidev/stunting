@@ -55,11 +55,11 @@ if (isset($_SESSION['username'])) {
             </a>
           </li>
         
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="user.php">
               <i class="ni ni-single-02 text-success"></i>Data User
             </a>
-          </li>
+          </li> -->
 <!--           <li class="nav-item">
             <a class="nav-link" href="grafik.php">
               <i class="ni ni-bullet-list-67 text-primary"></i> Grafik
