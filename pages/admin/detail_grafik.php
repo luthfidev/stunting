@@ -83,7 +83,22 @@
                                      while($row = mysqli_fetch_array($query))
                                      { ?>
                                     
-                                    
+                                    <?php if ($row['status_stunting']=="Stunting") {?>
+                                              
+                                              <div class="progress-wrapper">
+                                              <div class="progress-info">
+                                                <div class="progress-label">
+                                                  <span>Status Stunting</span>
+                                                </div>
+                                                <div class="progress-percentage">
+                                                  <span>Stunting</span>
+                                                </div>
+                                              </div>
+                                              <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                              </div>
+                                            </div>
+                                      <?php } ?>
                                       <?php if ($row['status_gizi']=="Gizi Baik") {?>
                                               
                                                     <div class="progress-wrapper">
