@@ -11,12 +11,18 @@
   else {
     header('location:../index.php?pesan=belum_login');
   }
-  $query = mysqli_query($connect, "select tanggal, 
+/*   $query = mysqli_query($connect, "select tanggal, 
 	COUNT(case when anak.keterangan='Stunting Gizi Baik' then 1 end) as baik,
     COUNT(case when anak.keterangan='Stunting Gizi Buruk' then 1 end) as buruk,
     COUNT(case when anak.keterangan='Stunting Gizi Kurang' then 1 end) as kurang,
     COUNT(case when anak.keterangan='Gizi lebih' then 1 end) as lebih  
-	from anak  group by tanggal");
+  from anak  group by tanggal"); */
+  $query = mysqli_query($connect, "select p.no_medisanak, date_format(p.tanggal_pengukuran, '%Y-%m') as tanggal,
+	  COUNT(case when p.status_gizi='Gizi Baik' then 1 end) as baik,
+    COUNT(case when p.status_gizi='Gizi Buruk' then 1 end) as buruk,
+    COUNT(case when p.status_gizi='Gizi Kurang' then 1 end) as kurang,
+    COUNT(case when p.status_gizi='Gizi lebih' then 1 end) as lebih  
+	from pengukuran p join anak a where p.no_medisanak = a.no_medisanak group by p.tanggal_pengukuran");
   $chart_data = '';
   while($row = mysqli_fetch_array($query))
   {
@@ -130,7 +136,7 @@
                                 <h5 class="card-title text-uppercase text-muted mb-0">Sehat</h5>
                                 <span class="h2 font-weight-bold mb-0">
                                 <?php
-                                $result=mysqli_query($connect, "SELECT count(*) as sehat from anak where keterangan = 'Stunting Gizi Baik' ");
+                                $result=mysqli_query($connect, "SELECT count(*) as sehat from pengukuran where status_gizi = 'Gizi Baik' ");
                                 $data=mysqli_fetch_assoc($result);
                                 echo $data['sehat'];
                                 ?>
@@ -154,7 +160,7 @@
                                 <h5 class="card-title text-uppercase text-muted mb-0">Tidak Sehat</h5>
                                 <span class="h2 font-weight-bold mb-0">
                                 <?php
-                                $result=mysqli_query($connect, "SELECT count(*) as tsehat from anak where keterangan = 'Stunting Gizi Buruk' ");
+                                $result=mysqli_query($connect, "SELECT count(*) as tsehat from pengukuran where status_gizi = 'Gizi Buruk' ");
                                 $data=mysqli_fetch_assoc($result);
                                 echo $data['tsehat'];
                                 ?>

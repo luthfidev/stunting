@@ -10,31 +10,8 @@
   else {
     header('location:../../index.php?pesan=belum_login');
   }
-   $nama_anak = null;
+  
 
-  if(isset($_GET["nama_anak"]))
-  {
-    $nama_anak = $_GET["nama_anak"];
-  }
- /*  $query = mysqli_query($connect, "select tanggal, nama_anak,
-  COUNT(case when anak.keterangan='Stunting Gizi Baik' then 1 end) as baik,
-  COUNT(case when anak.keterangan='Stunting Gizi Buruk' then 1 end) as buruk,
-  COUNT(case when anak.keterangan='Stunting Gizi Kurang' then 1 end) as kurang,
-  COUNT(case when anak.keterangan='Gizi lebih' then 1 end) as lebih 
-  from anak where nama_anak = '".$nama_anak."'"); */
-
-  $query = mysqli_query($connect, "select date_format(tanggal, '%Y-%m') as tanggal, nama_anak,
-  COUNT(case when anak.keterangan='Stunting Gizi Baik' then 1 end) as baik,
-  COUNT(case when anak.keterangan='Stunting Gizi Buruk' then 1 end) as buruk,
-  COUNT(case when anak.keterangan='Stunting Gizi Kurang' then 1 end) as kurang,
-  COUNT(case when anak.keterangan='Gizi lebih' then 1 end) as lebih 
-  from anak where nama_anak = '".$nama_anak."' group by tanggal");
-  $chart_data = '';
-  while($row = mysqli_fetch_array($query))
-  {
-    $chart_data .= "{ tanggal: '".$row["tanggal"]."', baik: ".$row["baik"].", buruk: ".$row["buruk"].", lebih: ".$row["lebih"].", kurang: ".$row["kurang"].",}, ";
-  }
-  $chart_data = substr($chart_data, 0, -2);
 
 ?>
 <html>
@@ -90,35 +67,90 @@
 
                       <div class="col-xl-12 col-lg-6">
                         <div class="card-body">
-                         
+                        <h1>HASIL IDENTIFIKASI PENGUKURAN</h1>
+                        <h2>nama anak</h2>
+                         <?php
+                                     $no_medisanak = null;
 
-                           <div class="progress-wrapper">
-                            <div class="progress-info">
-                              <div class="progress-label">
-                                <span>Status Gizi Balita</span>
-                              </div>
-                              <div class="progress-percentage">
-                                <span>Status Normal</span>
-                              </div>
-                            </div>
-                            <div class="progress">
-                              <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                            </div>
-                          </div>
+                                     if(isset($_GET["no_medisanak"]))
+                                     {
+                                       $no_medisanak = $_GET["no_medisanak"];
+                                     }
+                                                                    
+                                     $query = mysqli_query($connect, "SELECT * FROM anak a JOIN ortu o ON a.no_medisanak = o.no_medisanak 
+                                                                                           JOIN pengukuran p ON a.no_medisanak = p.no_medisanak WHERE p.no_medisanak = '$no_medisanak'");
+                                     $chart_data = '';
+                                     while($row = mysqli_fetch_array($query))
+                                     { ?>
+                                    
+                                    
+                                      <?php if ($row['status_gizi']=="Gizi Baik") {?>
+                                              
+                                                    <div class="progress-wrapper">
+                                                    <div class="progress-info">
+                                                      <div class="progress-label">
+                                                        <span>Status Gizi Balita</span>
+                                                      </div>
+                                                      <div class="progress-percentage">
+                                                        <span>Status Baik</span>
+                                                      </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                      <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="50" style="width: 50%;"></div>
+                                                    </div>
+                                                  </div>
+                                            <?php }if ($row['status_gizi']=="Gizi Buruk"){ ?>
+                                              <div class="progress-wrapper">
+                                                    <div class="progress-info">
+                                                      <div class="progress-label">
+                                                        <span>Status Gizi Balita</span>
+                                                      </div>
+                                                      <div class="progress-percentage">
+                                                        <span>Status Buruk</span>
+                                                      </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                      <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25" style="width: 25%;"></div>
+                                                    </div>
+                                                  </div>
+                                            <?php }if ($row['status_gizi']=="Gizi Lebih"){ ?> 
+                      
+                                              <div class="progress-wrapper">
+                                                    <div class="progress-info">
+                                                      <div class="progress-label">
+                                                        <span>Status Gizi Balita</span>
+                                                      </div>
+                                                      <div class="progress-percentage">
+                                                        <span>Status Lebih</span>
+                                                      </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                                    </div>
+                                                  </div>
+                                   
+                                            <?php }if ($row['status_gizi']=="Gizi Kurang"){ ?> 
+                      
+                                                <div class="progress-wrapper">
+                                                      <div class="progress-info">
+                                                        <div class="progress-label">
+                                                          <span>Status Gizi Balita</span>
+                                                        </div>
+                                                        <div class="progress-percentage">
+                                                          <span>Status Kurang</span>
+                                                        </div>
+                                                      </div>
+                                                      <div class="progress">
+                                                        <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="35" style="width: 35%;"></div>
+                                                      </div>
+                                                    </div>
+                                              <?php } ?>
+                                     
+                                    
+                                      <?php } ?>
 
-                          <div class="progress-wrapper">
-                            <div class="progress-info">
-                              <div class="progress-label">
-                                <span>Status Stunting Balita</span>
-                              </div>
-                              <div class="progress-percentage">
-                                <span>Status Normal</span>
-                              </div>
-                            </div>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                            </div>
-                          </div>
+
+                   
 
                           
                         </div>

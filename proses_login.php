@@ -68,7 +68,7 @@ if($cek > 0){
         $_SESSION['isLoggedIn']=1;
 		$_SESSION['level'] = "ortu";
 		// alihkan ke halaman dashboard pengurus
-		header("location:pages/ortu/dashboard.php");
+		header("location:pages/ortu/anak.php");
 
 	}else{
 

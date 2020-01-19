@@ -70,16 +70,15 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">No.</th>
+                    <th scope="col">Tanggal Pengukuran</th>
                     <th scope="col">No. Medis</th>
-                    <th scope="col">Tanggal</th>
                     <th scope="col">Nama Anak</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">Ibu</th>
                     <th scope="col">Tanggal Lahir</th>
+                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">Nama Ibu</th>
+                    <th scope="col">NIK Ibu</th>
                     <th scope="col">Berat</th>
                     <th scope="col">Tinggi Badan</th> 
-                    <th scope="col">Status Balita</th>
-                    <th scope="col">Warna Identifikasi Status Balita</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -93,22 +92,23 @@
                       
                       } $query = mysqli_query($connect, "SELECT * FROM anak WHERE tanggal = '".$tanggal."' ORDER BY id_anak DESC");
                       */
-                       $query = mysqli_query($connect, "SELECT * FROM anak ORDER BY id_anak DESC");
+                       $query = mysqli_query($connect, "SELECT * FROM anak a JOIN ortu o ON a.no_medisanak = o.no_medisanak 
+                                                                             JOIN pengukuran p ON a.no_medisanak = p.no_medisanak");
                        $no=1;
                        while ($data=mysqli_fetch_array($query)) {
                       ?>
                         <tr>
                           <td><?php echo $no++; ?></td>
-                          <td><?php echo $data['no_medis']; ?></td>
-                          <td><?php echo $data['tanggal']; ?></td>
+                          <td><?php echo $data['tanggal_pengukuran']; ?></td>
+                          <td><?php echo $data['no_medisanak']; ?></td>
                           <td><?php echo $data['nama_anak']; ?></td>
-                          <td><?php echo $data['jk']; ?></td>
+                          <td><?php echo $data['tgllahir_anak']; ?></td>
+                          <td><?php echo $data['jenis_kelamin']; ?></td>
                           <td><?php echo $data['nama_ibu']; ?></td>
-                          <td><?php echo $data['tanggal_lahir']; ?></td>
-                          <td><?php echo $data['berat']; ?> kg</td>
-                          <td><?php echo $data['tinggi']; ?> cm</td>
-                          <td><?php echo $data['keterangan']; ?></td>
-                          <?php if ($data['keterangan']=="Stunting Gizi Baik") {?>
+                          <td><?php echo $data['nik_ibu']; ?></td>
+                          <td><?php echo $data['bb_anak']; ?> kg</td>
+                          <td><?php echo $data['tb_anak']; ?> cm</td>
+                          <!-- <?php if ($data['keterangan']=="Gizi Baik") {?>
                             <td class="text-center">
                             <a class="btn btn-success" data-toggle="tooltip" data-placement="right" title="Sehat" href="#"><i class="fa fa-check"></i></a>
                           </td>
@@ -116,11 +116,12 @@
                             <td class="text-center">
                             <a class="btn btn-warning" data-toggle="tooltip" data-placement="right" title="Tidak Sehat" href="#"><i class="fa fa-times"></i></a>
                           </td>
-                          <?php } ?>
+                          <?php } ?> -->
                           <td>
-                          <a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
-                          <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a>
-                          <a href="detail_grafik.php?nama_anak=<?php echo $data["nama_anak"];?>" class="btn btn-info">Grafik</a> 
+                        <!--   <a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
+                          <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a> -->
+                          <a href="profil_anak.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-default">Profil</a>
+                          <a href="detail_grafik.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-info">Grafik</a> 
                           </td>
                             
                         </tr>
