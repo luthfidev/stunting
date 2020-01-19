@@ -106,7 +106,7 @@
                   if(isset($_GET['pesan'])){
                     if($_GET['pesan'] == "gagal"){
                      echo "<div class='alert alert-danger' role='alert'>
-                                <strong>Login Gagal!</strong> Username  atau Password salah!
+                                <strong>Login Gagal!</strong> Username  atau Password salah! Data Tidak Ditemukan !
                             </div>";
                     }else if($_GET['pesan'] == "logout"){
                       echo "Anda telah berhasil logout";
