@@ -39,7 +39,7 @@
 <body>
   <!-- Sidenav -->
 <?php   include '../../config.php'; 
-  include '../../assets/pages/navbar_left_admin.php';
+  include '../../assets/pages/navbar_left_dokter.php';
 ?>
   <!-- Main content -->
   <div class="main-content">
