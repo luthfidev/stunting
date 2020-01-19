@@ -35,7 +35,7 @@
 <body>
   <!-- Sidenav -->
 <?php   include '../../config.php'; 
-  include '../../assets/pages/navbar_left_admin.php';
+  include '../../assets/pages/navbar_left_ortu.php';
 ?>
   <!-- Main content -->
   <div class="main-content">
@@ -61,6 +61,8 @@
                 <div class="col text-right">
                   <!-- <a href="report/cetak_report_rekap_stok.php" class="btn btn-danger">Cetak Report</a> -->
                    <!-- <a href="#" data-toggle="modal" data-target="#AddModal" class="btn btn-success">Tambah</a> --> 
+                 
+
                 </div>
               </div>
             </div>
@@ -93,7 +95,8 @@
                       } $query = mysqli_query($connect, "SELECT * FROM anak WHERE tanggal = '".$tanggal."' ORDER BY id_anak DESC");
                       */
                        $query = mysqli_query($connect, "SELECT * FROM anak a JOIN ortu o ON a.no_medisanak = o.no_medisanak 
-                                                                             JOIN pengukuran p ON a.no_medisanak = p.no_medisanak");
+                                                                             JOIN pengukuran p ON a.no_medisanak = p.no_medisanak 
+                                                                             WHERE a.no_medisanak = '".$_SESSION['username']."'");
                        $no=1;
                        while ($data=mysqli_fetch_array($query)) {
                       ?>
