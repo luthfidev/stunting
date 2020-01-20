@@ -88,6 +88,7 @@
                                               <div class="progress-wrapper">
                                               <div class="progress-info">
                                                 <div class="progress-label">
+                                                  <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
                                                   <span>Status Stunting</span>
                                                 </div>
                                                 <div class="progress-percentage">
@@ -95,7 +96,7 @@
                                                 </div>
                                               </div>
                                               <div class="progress">
-                                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25" style="width: 25%;"></div>
                                               </div>
                                             </div>
                                       <?php } ?>
@@ -104,6 +105,7 @@
                                                     <div class="progress-wrapper">
                                                     <div class="progress-info">
                                                       <div class="progress-label">
+                                                      <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
                                                         <span>Status Gizi Balita</span>
                                                       </div>
                                                       <div class="progress-percentage">
@@ -118,6 +120,7 @@
                                               <div class="progress-wrapper">
                                                     <div class="progress-info">
                                                       <div class="progress-label">
+                                                      <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
                                                         <span>Status Gizi Balita</span>
                                                       </div>
                                                       <div class="progress-percentage">
@@ -133,6 +136,7 @@
                                               <div class="progress-wrapper">
                                                     <div class="progress-info">
                                                       <div class="progress-label">
+                                                      <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
                                                         <span>Status Gizi Balita</span>
                                                       </div>
                                                       <div class="progress-percentage">
@@ -149,6 +153,7 @@
                                                 <div class="progress-wrapper">
                                                       <div class="progress-info">
                                                         <div class="progress-label">
+                                                        <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
                                                           <span>Status Gizi Balita</span>
                                                         </div>
                                                         <div class="progress-percentage">
