@@ -10,7 +10,7 @@ $level 	 =	$_POST['level'];
 		if(mysqli_num_rows($result) == 1)
 		{
 			$pesan = "exist";
-			header('location:../user.php?pesan=exist');
+			header('location:../admin/user.php?pesan=exist');
 		}
 		else
 		{
@@ -18,7 +18,7 @@ $level 	 =	$_POST['level'];
 		$query = mysqli_query($connect, "INSERT INTO admin VALUES (NULL, '$username', '$password', '$level');") or die(mysqli_connect_error());
 			if($query)
 			{
-				 header('location:../user.php?pesan=sukses');
+				 header('location:../admin/user.php?pesan=sukses');
 			}
 		}
 

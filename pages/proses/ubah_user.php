@@ -11,6 +11,6 @@ $level = $_POST['level'];
 $query = mysql_query("UPDATE user SET `nama_user` = '$nama', `username` = '$user', `password` = '$pass' , `cp` = '$telp' , `level` = '$level' WHERE `id_user` = '$id';") or die(mysql_error());
  
 if ($query) {
-    header('location:../user.php');
+    header('location:../admin/user.php');
 }
 ?>

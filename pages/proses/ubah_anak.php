@@ -24,7 +24,7 @@ if ($query) {
    });  
   },10); 
   window.setTimeout(function(){ 
-   window.location.replace('../anak.php');
+   window.location.replace('../admin/anak.php');
   } ,1000); 
  </script>"; 
     //header('location:../anak.php');

@@ -19,7 +19,7 @@ if ($query) {
    });  
   },10); 
   window.setTimeout(function(){ 
-   window.location.replace('../user.php');
+   window.location.replace('../admin/user.php');
   },1000); 
  </script>"; 
     //header("location:../anak.php");
