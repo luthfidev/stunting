@@ -165,7 +165,7 @@
                       </div>
                       <select class="form-control" name="level" id="level">
                           <option value="admin">Admin</option>
-                          <option value="doktor">Doktor</option>
+                          <option value="dokter">Dokter</option>
                           <option value="perawat">Perawat</option>
                         </select>
                     </div>
