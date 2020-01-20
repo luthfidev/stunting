@@ -23,7 +23,7 @@
               <img alt="Image placeholder" src="../../assets/img/brand/favicon.png">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">Halo,</span>
+              <span class="mb-0 text-sm  font-weight-bold">Halo, <?php echo $_SESSION['username']; ?></span>
             </div>
           </div>
         </a>
