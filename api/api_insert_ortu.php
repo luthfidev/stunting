@@ -10,7 +10,7 @@
 	 $notelp		= $_POST["notelp"];
 	 $alamat 		= $_POST["alamat"];
 	 
-		 $query = mysqli_query($connect, "INSERT INTO ortu (id_ortu, nama_ayah, nik_ayah, nama_ibu, nik_ibu, alamat, notelp) VALUES(0,'".$nama_ayah."','".$nik_ayah."','".$nama_ibu."','".$nik_ibu."','".$alamat."')");
+		 $query = mysqli_query($connect, "INSERT INTO ortu (id_ortu, nama_ayah, nik_ayah, nama_ibu, nik_ibu, alamat, notelp) VALUES(0,'".$nama_ayah."','".$nik_ayah."','".$nama_ibu."','".$nik_ibu."','".$alamat."','".$notelp."')");
 
 		 		if ($query){
 		 			$response = new usr();
