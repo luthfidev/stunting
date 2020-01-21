@@ -129,12 +129,12 @@
                             <a class="btn btn-warning" data-toggle="tooltip" data-placement="right" title="Tidak Sehat" href="#"><i class="fa fa-times"></i></a>
                           </td>
                           <?php } ?> -->
-                          <td>
-                         <!--<a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
+                         <!-- <td>
+                         <a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
                           <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a> -->
                           <!-- <a href="profil_anak.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-default">Profil</a>
-                          <a href="detail_grafik.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-info">Grafik</a>  -->
-                          </td>
+                          <a href="detail_grafik.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-info">Grafik</a>  
+                          </td>-->
                             
                         </tr>
                         <div class="modal fade show" id="EditModal<?php echo $data['id_anak']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form"">
