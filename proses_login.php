@@ -50,7 +50,7 @@ if($cek > 0){
         $_SESSION['isLoggedIn']=1;
 		$_SESSION['level'] = "admin";
 		// alihkan ke halaman dashboard admin
-		header("location:pages/admin/dashboard.php");
+		header("location:pages/admin/anak.php");
 
 	// cek jika user login sebagai pegawai
 	}else if($data['level']=="dokter"){
