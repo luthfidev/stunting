@@ -72,14 +72,20 @@
                     <th scope="col">No.</th>
                     <th scope="col">Tanggal Pengukuran</th>
                     <th scope="col">No. Medis</th>
+                    <th scope="col">NIK Anak</th>
                     <th scope="col">Nama Anak</th>
+                    <th scope="col">Tempat Lahir</th>
                     <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">Nama Ayah</th>
+                    <th scope="col">NIK Ayah</th>
                     <th scope="col">Nama Ibu</th>
                     <th scope="col">NIK Ibu</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">No Telpon</th>
                     <th scope="col">Berat</th>
                     <th scope="col">Tinggi Badan</th> 
-                    <th scope="col">Action</th>
+                    <!-- <th scope="col">Action</th> -->
                   </tr>
                 </thead>
                   <tbody>
@@ -101,11 +107,17 @@
                           <td><?php echo $no++; ?></td>
                           <td><?php echo $data['tanggal_pengukuran']; ?></td>
                           <td><?php echo $data['no_medisanak']; ?></td>
+                          <td><?php echo $data['nik_anak'];?></td>
                           <td><?php echo $data['nama_anak']; ?></td>
+                          <td><?php echo $data['tempat_lhr'];?></td>
                           <td><?php echo $data['tgllahir_anak']; ?></td>
                           <td><?php echo $data['jenis_kelamin']; ?></td>
+                          <td><?php echo $data['nama_ayah'];?></td>
+                          <td><?php echo $data['nik_ayah'];?></td>
                           <td><?php echo $data['nama_ibu']; ?></td>
                           <td><?php echo $data['nik_ibu']; ?></td>
+                          <td><?php echo $data['alamat'];?></td>
+                          <td><?php echo $data['notelp'];?></td>
                           <td><?php echo $data['bb_anak']; ?> kg</td>
                           <td><?php echo $data['tb_anak']; ?> cm</td>
                           <!-- <?php if ($data['keterangan']=="Gizi Baik") {?>
@@ -118,8 +130,8 @@
                           </td>
                           <?php } ?> -->
                           <td>
-                         <a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
-                          <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a> 
+                         <!--<a href="#" data-toggle="modal" data-target="#EditModal<?php echo $data['id_anak']; ?>" class="btn btn-primary">Ubah</a>
+                          <a href="proses/hapus_anak.php?id_anak=<?php echo $data["id_anak"];?>" class="btn btn-danger del">Hapus</a> -->
                           <!-- <a href="profil_anak.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-default">Profil</a>
                           <a href="detail_grafik.php?no_medisanak=<?php echo $data["no_medisanak"];?>" class="btn btn-info">Grafik</a>  -->
                           </td>
