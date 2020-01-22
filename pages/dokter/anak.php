@@ -94,7 +94,8 @@
                       } $query = mysqli_query($connect, "SELECT * FROM anak WHERE tanggal = '".$tanggal."' ORDER BY id_anak DESC");
                       */
                        $query = mysqli_query($connect, "SELECT * FROM anak a JOIN ortu o ON a.no_medisanak = o.no_medisanak 
-                                                                             JOIN pengukuran p ON a.no_medisanak = p.no_medisanak");
+                                                                             JOIN pengukuran p ON a.no_medisanak = p.no_medisanak
+                                                                              GROUP BY a.no_medisanak");
                        $no=1;
                        while ($data=mysqli_fetch_array($query)) {
                       ?>
