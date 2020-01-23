@@ -68,7 +68,6 @@
                       <div class="col-xl-12 col-lg-6">
                         <div class="card-body">
                         <h1>HASIL IDENTIFIKASI PENGUKURAN</h1>
-                        <h2>nama anak</h2>
                          <?php
                                      $no_medisanak = null;
 

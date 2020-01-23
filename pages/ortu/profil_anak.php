@@ -67,8 +67,7 @@
 
                       <div class="col-xl-12 col-lg-6">
                         <div class="card-body">
-                        <h1>HASIL IDENTIFIKASI PENGUKURAN</h1>
-                        <h2>Profil Anak</h2>
+                        <h1>BIODATA ANAK</h1>
                
                         <div>
                         <?php
@@ -85,7 +84,15 @@
                         //$result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_array($query)) {  
                     ?>
-                        <div class="form-group">
+                                          <div class="form-group">
+                                          <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text">NIK Anak:</span>
+                                            </div>
+                                            <input class="form-control" placeholder="NIK Anak" type="text" name="nik_anak" id="nikanak" value="<?php echo $row['nik_anak']; ?>" readonly>
+                                          </div>
+                                        </div>
+                                          <div class="form-group">
                                           <div class="input-group input-group-alternative">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text">Nama Anak:</span>
@@ -93,7 +100,14 @@
                                             <input class="form-control" placeholder="Nama Anak" type="text" name="nama_anak" id="nama" value="<?php echo $row['nama_anak']; ?>" readonly>
                                           </div>
                                         </div>
-                                     
+                                        <div class="form-group">
+                                          <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text">Tempat Lahir Anak:</span>
+                                            </div>
+                                            <input class="form-control" placeholder="tempatlhr" type="text" name="tempatlhr" id="tempatlhr" value="<?php echo $row['tempat_lhr']; ?>" readonly>
+                                          </div>
+                                        </div>
                                         <div class="form-group">
                                           <div class="input-group input-group-alternative">
                                             <div class="input-group-prepend">
@@ -153,7 +167,14 @@
                                             <input class="form-control" placeholder="Nama Ibu" type="text" name="nama_ibu" id="ibu" value="<?php echo $row['alamat']; ?>" readonly>
                                           </div>
                                         </div>
-
+                                        <div class="form-group">
+                                          <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text">Nomor Telpon:</span>
+                                            </div>
+                                            <input class="form-control" placeholder="Notelp" type="text" name="notelp" id="notelp" value="<?php echo $row['notelp']; ?>" readonly>
+                                          </div>
+                                        </div>
                                               <?php }?>
 
                           
