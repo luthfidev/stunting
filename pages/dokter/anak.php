@@ -56,7 +56,8 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h1 class="mb-0">Detail Data Anak</h1>
+                  <h1 class="mb-0">HISTORY IDENTIFIKASI PENGUKURAN</h1>
+                  <h2>Status Gizi dan Stunting Balita</h2>
                 </div>
                 <div class="col text-right">
                   <!-- <a href="report/cetak_report_rekap_stok.php" class="btn btn-danger">Cetak Report</a> -->

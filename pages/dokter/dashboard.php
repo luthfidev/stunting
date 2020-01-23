@@ -78,6 +78,8 @@
               <div class="row align-items-center">
               <div class="container-fluid">
                   <div class="header-body">
+                  <h1 class="mb-0">HISTORY IDENTIFIKASI PENGUKURAN</h1>
+                  <h2>Status Gizi dan Stunting Balita</h2>
                     <!-- Card stats -->
                     <div class="row">
                      <!--  <div class="col-xl-3 col-lg-6">
