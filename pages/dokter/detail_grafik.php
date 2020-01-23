@@ -28,7 +28,7 @@
     COUNT(case when p.status_gizi='Gizi Buruk' then 1 end) as buruk,
     COUNT(case when p.status_gizi='Gizi Kurang' then 1 end) as kurang,
     COUNT(case when p.status_gizi='Gizi Lebih' then 1 end) as lebih  
-	from pengukuran p join anak a where p.no_medisanak = '$no_medisanak' group by p.tanggal_pengukuran");
+	from pengukuran p join anak a where p.no_medisanak = '$no_medisanak'");
   $chart_data = '';
   while($row = mysqli_fetch_array($query))
   {
