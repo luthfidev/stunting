@@ -5,36 +5,13 @@
   if (isset($_SESSION['username'])) {
   $username = $_SESSION['username'];
   $isLoggedIn = $_SESSION['isLoggedIn'];
-  $level= $_SESSION['level'];
- 
+  //$id_login = $_SESSION['iduser'];
   }
   else {
-    header('location:../index.php?pesan=belum_login');
+    header('location:../../index.php?pesan=belum_login');
   }
-/*   $query = mysqli_query($connect, "select tanggal, 
-	COUNT(case when anak.keterangan='Stunting Gizi Baik' then 1 end) as baik,
-    COUNT(case when anak.keterangan='Stunting Gizi Buruk' then 1 end) as buruk,
-    COUNT(case when anak.keterangan='Stunting Gizi Kurang' then 1 end) as kurang,
-    COUNT(case when anak.keterangan='Gizi lebih' then 1 end) as lebih  
-  from anak  group by tanggal"); */
-  $no_medisanak = null;
+  
 
-  if(isset($_GET["no_medisanak"]))
-  {
-    $no_medisanak = $_GET["no_medisanak"];
-  }
-  $query = mysqli_query($connect, "select p.no_medisanak, date_format(p.tanggal_pengukuran, '%Y-%m') as tanggal,
-	  COUNT(case when p.status_gizi='Gizi Baik' then 1 end) as baik,
-    COUNT(case when p.status_gizi='Gizi Buruk' then 1 end) as buruk,
-    COUNT(case when p.status_gizi='Gizi Kurang' then 1 end) as kurang,
-    COUNT(case when p.status_gizi='Gizi Lebih' then 1 end) as lebih  
-	from pengukuran p join anak a where p.no_medisanak = '$no_medisanak'");
-  $chart_data = '';
-  while($row = mysqli_fetch_array($query))
-  {
-    $chart_data .= "{ tanggal: '".$row["tanggal"]."', baik: ".$row["baik"].", buruk: ".$row["buruk"].", lebih: ".$row["lebih"].", kurang: ".$row["kurang"].",}, ";
-  }
-  $chart_data = substr($chart_data, 0, -2);
 
 ?>
 <html>
@@ -62,7 +39,7 @@
 <body>
   <!-- Sidenav -->
 <?php   include '../../config.php'; 
-  include '../../assets/pages/navbar_left_dokter.php';
+  include '../../assets/pages/navbar_left_ortu.php';
 ?>
   <!-- Main content -->
   <div class="main-content">
@@ -84,111 +61,117 @@
               <div class="row align-items-center">
               <div class="container-fluid">
                   <div class="header-body">
-                  <h1 class="mb-0">HISTORY IDENTIFIKASI PENGUKURAN</h1>
-                  <h2>Status Gizi dan Stunting Balita</h2>
                     <!-- Card stats -->
                     <div class="row">
-                <!--       <div class="col-xl-3 col-lg-6">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">User</h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                <?php
-                                $result=mysqli_query($connect, "SELECT count(*) as ttluser from admin");
-                                $data=mysqli_fetch_assoc($result);
-                                echo $data['ttluser'];
-                                ?>
-                                </span>
-                              </div>
-                              <div class="col-auto">
-                                <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                  <i class="fas fa-user"></i>
-                                </div>
-                              </div>
-                            </div>
-                      
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-6">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Anak</h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                <?php
-                                $result=mysqli_query($connect, "SELECT count(*) as ttlanak from anak");
-                                $data=mysqli_fetch_assoc($result);
-                                echo $data['ttlanak'];
-                                ?>
-                                </span>
-                              </div>
-                              <div class="col-auto">
-                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                <i class="fas fa-smile"></i>
-                                </div>
-                              </div>
-                            </div>
-                        
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-6">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Sehat</h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                <?php
-                                $result=mysqli_query($connect, "SELECT count(*) as sehat from pengukuran where status_gizi = 'Gizi Baik'");
-                                $data=mysqli_fetch_assoc($result);
-                                echo $data['sehat'];
-                                ?>
-                                </span>
-                              </div>
-                              <div class="col-auto">
-                                <div class="icon icon-shape bg-green text-white rounded-circle shadow">
-                                <i class="fas fa-check-square"></i>
-                                </div>
-                              </div>
-                            </div>
-                      
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-6">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Tidak Sehat</h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                <?php
-                                $result=mysqli_query($connect, "SELECT count(*) as tsehat from pengukuran where status_gizi = 'Gizi Buruk'");
-                                $data=mysqli_fetch_assoc($result);
-                                echo $data['tsehat'];
-                                ?>
-                                </span>
-                              </div>
-                              <div class="col-auto">
-                                <div class="icon icon-shape bg-red text-white rounded-circle shadow">
-                                <i class="fas fa-times-circle"></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div> -->
-                      </div>
+                
 
                       <div class="col-xl-12 col-lg-6">
                         <div class="card-body">
-                           <div class="card card-stats mb-4 mb-xl-0">
-                              <div id="chart"></div>
-                            </div>
+                        <h1>HASIL IDENTIFIKASI PENGUKURAN</h1>
+                         <?php
+                                     $no_medisanak = null;
+
+                                     if(isset($_GET["no_medisanak"]))
+                                     {
+                                       $no_medisanak = $_GET["no_medisanak"];
+                                     }
+                                                                    
+                                     $query = mysqli_query($connect, "SELECT * FROM anak a JOIN ortu o ON a.no_medisanak = o.no_medisanak 
+                                                                                           JOIN pengukuran p ON a.no_medisanak = p.no_medisanak WHERE p.no_medisanak = '$no_medisanak'");
+                                     $chart_data = '';
+                                     while($row = mysqli_fetch_array($query))
+                                     { ?>
+                                    
+                                    <?php if ($row['status_stunting']=="Stunting") {?>
+                                              
+                                              <div class="progress-wrapper">
+                                              <div class="progress-info">
+                                                <div class="progress-label">
+                                                <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
+                                                  <span>Status Stunting</span> 
+                                                </div>
+                                                <div class="progress-percentage">
+                                                  <span>Stunting</span>
+                                                </div>
+                                              </div>
+                                              <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25" style="width: 25%;"></div>
+                                              </div>
+                                            </div>
+                                      <?php } ?>
+                                      <?php if ($row['status_gizi']=="Gizi Baik") {?>
+                                              
+                                                    <div class="progress-wrapper">
+                                                    <div class="progress-info">
+                                                      <div class="progress-label">
+                                                      <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
+                                                        <span>Status Gizi Balita</span>
+                                                      </div>
+                                                      <div class="progress-percentage">
+                                                        <span>Status Baik</span>
+                                                      </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                      <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="50" style="width: 50%;"></div>
+                                                    </div>
+                                                  </div>
+                                            <?php }if ($row['status_gizi']=="Gizi Buruk"){ ?>
+                                              <div class="progress-wrapper">
+                                                    <div class="progress-info">
+                                                      <div class="progress-label">
+                                                      <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
+                                                        <span>Status Gizi Balita</span>
+                                                      </div>
+                                                      <div class="progress-percentage">
+                                                        <span>Status Buruk</span>
+                                                      </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                      <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25" style="width: 25%;"></div>
+                                                    </div>
+                                                  </div>
+                                            <?php }if ($row['status_gizi']=="Gizi Lebih"){ ?> 
+                      
+                                              <div class="progress-wrapper">
+                                                    <div class="progress-info">
+                                                      <div class="progress-label">
+                                                      <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
+                                                        <span>Status Gizi Balita</span>
+                                                      </div>
+                                                      <div class="progress-percentage">
+                                                        <span>Status Lebih</span>
+                                                      </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                                    </div>
+                                                  </div>
+                                   
+                                            <?php }if ($row['status_gizi']=="Gizi Kurang"){ ?> 
+                      
+                                                <div class="progress-wrapper">
+                                                      <div class="progress-info">
+                                                        <div class="progress-label">
+                                                        <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
+                                                          <span>Status Gizi Balita</span>
+                                                        </div>
+                                                        <div class="progress-percentage">
+                                                          <span>Status Kurang</span>
+                                                        </div>
+                                                      </div>
+                                                      <div class="progress">
+                                                        <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="35" style="width: 35%;"></div>
+                                                      </div>
+                                                    </div>
+                                              <?php } ?>
+                                     
+                                    
+                                      <?php } ?>
+
+
+                   
+
+                          
                         </div>
                       </div>
 
@@ -213,7 +196,7 @@
   <script src="../../assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="../../assets/js/argon.js?v=1.0.0"></script>
-  <script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
+  <script type="text/javascript" src="../../assets/DataTables/datatables.min.js"></script>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
@@ -236,7 +219,7 @@
   labels: ['baik','buruk']
 }); */
 
-new Morris.Line({
+new Morris.Area({
   // ID of the element in which to draw the chart.
   element: 'chart',
   // Chart data records -- each entry in this array corresponds to a point on
