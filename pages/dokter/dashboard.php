@@ -21,12 +21,13 @@
 	  COUNT(case when p.status_gizi='Gizi Baik' then 1 end) as baik,
     COUNT(case when p.status_gizi='Gizi Buruk' then 1 end) as buruk,
     COUNT(case when p.status_gizi='Gizi Kurang' then 1 end) as kurang,
-    COUNT(case when p.status_gizi='Gizi Lebih' then 1 end) as lebih  
+    COUNT(case when p.status_gizi='Gizi Lebih' then 1 end) as lebih,
+    COUNT(case when p.status_stunting='Normal' then 1 end) as normal  
 	from pengukuran p join anak a where p.no_medisanak = a.no_medisanak group by p.tanggal_pengukuran");
   $chart_data = '';
   while($row = mysqli_fetch_array($query))
   {
-    $chart_data .= "{ tanggal: '".$row["tanggal"]."', baik: ".$row["baik"].", buruk: ".$row["buruk"].", lebih: ".$row["lebih"].", kurang: ".$row["kurang"].",}, ";
+    $chart_data .= "{ tanggal: '".$row["tanggal"]."', baik: ".$row["baik"].", buruk: ".$row["buruk"].", lebih: ".$row["lebih"].", kurang: ".$row["kurang"].",normal: ".$row["normal"].",}, ";
   }
   $chart_data = substr($chart_data, 0, -2);
 
@@ -240,11 +241,11 @@ new Morris.Line({
   xkey: 'tanggal',
   parseTime: false,
   // A list of names of data record attributes that contain y-values.
-  ykeys: ['baik','buruk','lebih','kurang'],
+  ykeys: ['baik','buruk','lebih','kurang','normal'],
   // Labels for the ykeys -- will be displayed when you hover over the
   // chart.
-  labels: ['Stunting Baik','Stunting Buruk','Stunting Lebih','Stunting Kurang'],
-  lineColors: ['#373651','#E65A26','#0bb356','#ebe834']
+  labels: ['Stunting Baik','Stunting Buruk','Stunting Lebih','Stunting Kurang','Stunting Normal'],
+  lineColors: ['#373651','#E65A26','#0bb356','#ebe834','#16a085']
 });
 </script>
 

@@ -99,6 +99,23 @@
                                               </div>
                                             </div>
                                       <?php } ?>
+                                      <?php if ($row['status_stunting']=="Normal") {?>
+                                              
+                                              <div class="progress-wrapper">
+                                              <div class="progress-info">
+                                                <div class="progress-label">
+                                                <span><?php echo $row['tanggal_pengukuran'] ?></span> ||
+                                                  <span>Status Stunting</span> 
+                                                </div>
+                                                <div class="progress-percentage">
+                                                  <span>Normal</span>
+                                                </div>
+                                              </div>
+                                              <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25" style="width: 25%;"></div>
+                                              </div>
+                                            </div>
+                                      <?php } ?>
                                       <?php if ($row['status_gizi']=="Gizi Baik") {?>
                                               
                                                     <div class="progress-wrapper">
