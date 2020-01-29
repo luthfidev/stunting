@@ -119,6 +119,21 @@
                                         <div class="form-group">
                                           <div class="input-group input-group-alternative">
                                             <div class="input-group-prepend">
+                                              <span class="input-group-text">Usia :</span>
+                                            </div>
+                                            <input class="form-control" placeholder="Nama Ibu" type="text" name="nama_ibu" id="ibu" value="<?php $lahir = $row['tgllahir_anak']; 
+                                                                                                                                                 $now = date('Y');
+                                                                                                                                                 $lahirs = substr($lahir,-4);
+                                                                                                                                                 $usia = ((int)$now - (int)$lahirs);
+                                                                                                                                                 $usias = ($usia * 12);
+                                                                                                                                                 echo $usias;
+
+                                                                                                                                           ?> Bulan" readonly>
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
                                               <span class="input-group-text">Jenis Kelamin:</span>
                                             </div>
                                             <select class="form-control" name="jk" id="level" readonly>
