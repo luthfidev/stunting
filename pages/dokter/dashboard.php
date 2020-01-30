@@ -142,7 +142,7 @@
                                 <h5 class="card-title text-uppercase text-muted mb-0">Sehat</h5>
                                 <span class="h2 font-weight-bold mb-0">
                                 <?php
-                                $result=mysqli_query($connect, "SELECT count(*) as sehat from pengukuran where status_gizi = 'Gizi Baik' ");
+                                $result=mysqli_query($connect, "SELECT count(*) as sehat from pengukuran where status_stunting = 'Normal' GROUP BY no_medisanak ");
                                 $data=mysqli_fetch_assoc($result);
                                 echo $data['sehat'];
                                 ?>
@@ -166,7 +166,7 @@
                                 <h5 class="card-title text-uppercase text-muted mb-0">Tidak Sehat</h5>
                                 <span class="h2 font-weight-bold mb-0">
                                 <?php
-                                $result=mysqli_query($connect, "SELECT count(*) as tsehat from pengukuran where status_gizi = 'Gizi Buruk' ");
+                                $result=mysqli_query($connect, "SELECT count(*) as tsehat from pengukuran where status_stunting = 'Stunting' GROUP BY no_medisanak ");
                                 $data=mysqli_fetch_assoc($result);
                                 echo $data['tsehat'];
                                 ?>
