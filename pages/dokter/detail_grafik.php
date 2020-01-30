@@ -112,7 +112,7 @@
                                                 </div>
                                               </div>
                                               <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25" style="width: 25%;"></div>
+                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
                                               </div>
                                             </div>
                                       <?php } ?>
