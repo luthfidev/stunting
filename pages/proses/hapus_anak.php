@@ -3,9 +3,9 @@
 <?php
 include('../../config.php');
  
-$id = $_GET['id_anak'];
+$id = $_GET['no_medisanak'];
  
-$query = mysqli_query($connect,"delete from anak where id_anak='$id'") or die(mysqli_connect_error());
+$query = mysqli_query($connect,"delete from anak where no_medisanak='$id'") or die(mysqli_connect_error());
  
 if ($query) {
     echo "
